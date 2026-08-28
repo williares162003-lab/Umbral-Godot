@@ -22,6 +22,7 @@ captures/
 builds/
 graphify-out/
 backups/
+docs/references/*.import
 
 # Bundled Terrain3D sample project (not used by Umbral)
 demo/

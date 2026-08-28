@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/terrain_player_probe.gd" id="1_player"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_player"]
+albedo_color = Color(0.08, 0.72, 0.76, 1)
+roughness = 0.78
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_player"]
+material = SubResource("StandardMaterial3D_player")
+radius = 0.35
+height = 1.8
+
+[node name="TerrainPlayerProbe" type="CharacterBody3D"]
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="ScaleReference" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_player")
+
+[node name="CameraYaw" type="Node3D" parent="."]
+position = Vector3(0, 1.62, 0)
+rotation_degrees = Vector3(0, -28, 0)
+
+[node name="CameraPitch" type="Node3D" parent="CameraYaw"]
+rotation_degrees = Vector3(-12, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraYaw/CameraPitch"]
+spring_length = 4.2
+margin = 0.15
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraYaw/CameraPitch/SpringArm3D"]
+current = true
+fov = 70.0
+near = 0.1
+far = 16000.0

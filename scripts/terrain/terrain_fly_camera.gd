@@ -8,6 +8,10 @@ var looking := false
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not current:
+		looking = false
+		return
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		looking = event.pressed
 		Input.set_mouse_mode(
@@ -28,6 +32,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	if not current:
+		return
+
 	var input_vector := Vector3.ZERO
 	if Input.is_key_pressed(KEY_W):
 		input_vector.z -= 1.0

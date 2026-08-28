@@ -26,9 +26,24 @@ Ejecutar `Abrir Umbral Godot.cmd` o abrir esta carpeta desde Godot 4.6.3. La eta
 - `assets/terrain/heightmaps/umbral_world_preview.png`: vista superior coloreada de composicion.
 - `assets/terrain/heightmaps/umbral_world_layout.json`: escala y coordenadas de los hitos principales.
 - `scenes/terrain/TerrainPrototype.tscn`: escena principal.
+- `scenes/player/TerrainPlayerProbe.tscn`: referencia humana temporal y camara en tercera persona.
 - `scripts/terrain/terrain_prototype.gd`: carga el terreno en Terrain3D.
 - `scripts/terrain/terrain_fly_camera.gd`: camara libre de inspeccion.
+- `scripts/player/terrain_player_probe.gd`: movimiento provisional adaptado a la altura y pendiente del terreno.
 - `docs/terrain_direction.md`: direccion del mapa y criterios de aprobacion.
+
+## Revisar el terreno a escala humana
+
+La escena principal inicia con una capsula temporal de `1.8 m` en la pradera del sureste. Su unica finalidad es comprobar escala, pendientes y rutas antes de crear el personaje definitivo.
+
+- `W`, `A`, `S`, `D`: caminar.
+- `Shift`: correr.
+- Mover el raton: orientar la camara en tercera persona.
+- `Esc`: liberar el raton; clic izquierdo para capturarlo otra vez.
+- `C`: alternar entre la camara del jugador y la camara aerea.
+- En la camara aerea, mantener clic derecho y usar `W`, `A`, `S`, `D`, `Q`, `E`; `Shift` acelera.
+
+El controlador consulta directamente la altura y la normal de Terrain3D. No sustituye la futura fisica del jugador ni agrega materiales finales.
 
 ## Regenerar el relieve
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/terrain/terrain_prototype.gd" id="1_terrain"]
 [ext_resource type="Script" path="res://scripts/terrain/terrain_fly_camera.gd" id="2_camera"]
+[ext_resource type="PackedScene" path="res://scenes/player/TerrainPlayerProbe.tscn" id="3_player"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_umbral"]
 sky_top_color = Color(0.09, 0.28, 0.52, 1)
@@ -39,7 +40,10 @@ directional_shadow_max_distance = 3000.0
 [node name="TerrainCamera" type="Camera3D" parent="."]
 position = Vector3(6600, 880, 8700)
 rotation_degrees = Vector3(-7, 17, 0)
-current = true
+current = false
 fov = 72.0
 far = 24000.0
 script = ExtResource("2_camera")
+
+[node name="TerrainPlayer" parent="." instance=ExtResource("3_player")]
+position = Vector3(6450, 1200, 7950)

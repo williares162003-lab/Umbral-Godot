@@ -290,8 +290,10 @@ def parse_docs(graph: Graph) -> None:
     candidates = [
         ROOT / "project.godot",
         ROOT / "scenes/terrain/TerrainPrototype.tscn",
+        ROOT / "scenes/player/TerrainPlayerProbe.tscn",
         ROOT / "scripts/terrain/terrain_prototype.gd",
         ROOT / "scripts/terrain/terrain_fly_camera.gd",
+        ROOT / "scripts/player/terrain_player_probe.gd",
         ROOT / "tools/generate_heightmap.py",
     ]
     for doc in documented_files:

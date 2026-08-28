@@ -8,10 +8,20 @@ const TERRAIN_HEIGHT_METERS := 1350.0
 const TERRAIN_BASE_HEIGHT := -180.0
 const CAPTURE_PATH := "res://captures/terrain_world_10km.png"
 
+@onready var aerial_camera: Camera3D = $TerrainCamera
+@onready var player_probe: CharacterBody3D = $TerrainPlayer
+@onready var player_camera: Camera3D = (
+	$TerrainPlayer/CameraYaw/CameraPitch/SpringArm3D/PlayerCamera
+)
+
 var terrain: Terrain3D
 
 
 func _ready() -> void:
+	var capture_mode := "--capture-terrain" in OS.get_cmdline_user_args()
+	player_probe.visible = not capture_mode
+	set_player_camera_enabled(not capture_mode)
+
 	terrain = Terrain3D.new()
 	terrain.name = "UmbralTerrain10km"
 	add_child(terrain, true)
@@ -64,8 +74,23 @@ func _ready() -> void:
 		% [MAP_SIZE_METERS, MAP_SIZE_METERS, VERTEX_SPACING]
 	)
 
-	if "--capture-terrain" in OS.get_cmdline_user_args():
+	if capture_mode:
 		await capture_terrain_preview()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey \
+			and event.pressed \
+			and not event.echo \
+			and event.physical_keycode == KEY_C:
+		set_player_camera_enabled(not player_camera.current)
+		get_viewport().set_input_as_handled()
+
+
+func set_player_camera_enabled(enabled: bool) -> void:
+	player_camera.current = enabled
+	aerial_camera.current = not enabled
+	player_probe.set_control_enabled(enabled)
 
 
 func capture_terrain_preview() -> void:

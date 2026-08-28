@@ -22,8 +22,10 @@ REQUIRED_REPO_FILES = [
     "docs/terrain_direction.md",
     "docs/references/terrain_world_10km_visual_target.png",
     "scenes/terrain/TerrainPrototype.tscn",
+    "scenes/player/TerrainPlayerProbe.tscn",
     "scripts/terrain/terrain_prototype.gd",
     "scripts/terrain/terrain_fly_camera.gd",
+    "scripts/player/terrain_player_probe.gd",
     "tools/generate_heightmap.py",
     "tools/generar_graphify_umbral.py",
     "assets/terrain/heightmaps/umbral_world_heightmap.r16",
@@ -96,6 +98,8 @@ def verify(repo: Path, vault: Path) -> int:
             errors.append("El mapa principal no registra la escala activa de 10 km.")
         if "terrain_world_10km_visual_target.png" not in hub_text:
             errors.append("El mapa principal no enlaza la referencia visual aprobada.")
+        if "TerrainPlayerProbe" not in hub_text:
+            errors.append("El mapa principal no registra la prueba de escala humana.")
         if "umbral_world_heightmap.r16" not in (
             vault / "Projects/Umbral/Mundo abierto/Pipeline de heightmap y assets.md"
         ).read_text(encoding="utf-8"):

@@ -52,6 +52,14 @@ Orden previsto para aproximarse a la referencia:
 - La escena mantiene una navegacion fluida en la laptop de William.
 - La vista 3D no muestra escalones de cuantizacion ni paredes circulares repetitivas.
 
+## Prueba de escala humana
+
+`TerrainPlayerProbe` es una herramienta temporal de validacion, no el personaje final. Representa una persona de `1.8 m`, coloca la camara cerca de la altura de los ojos y mantiene una distancia de tercera persona de `4.2 m`.
+
+La prueba comienza en la pradera sureste, cerca de `(6450, 7950)`. El controlador toma la altura y la normal directamente de Terrain3D, se adapta al relieve y rechaza pendientes mayores de 45 grados. La tecla `C` permite comparar la experiencia a escala humana con la vista aerea sin cambiar de escena.
+
+Antes de aprobar el relieve se debe recorrer al menos la pradera inicial, una ruta hacia el valle y la aproximacion a un sistema de acantilados. El objetivo es detectar paredes desproporcionadas, superficies demasiado vacias, rutas ambiguas y cambios de altura que no se perciben correctamente desde la camara aerea.
+
 ## Fuera de alcance por ahora
 
 - Combate y enemigos.
