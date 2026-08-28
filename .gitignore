@@ -1,0 +1,30 @@
+# Godot generated files
+.godot/
+.godot-user/
+*.tmp
+
+# .NET generated files
+.mono/
+bin/
+obj/
+
+# IDE files
+.idea/
+.vscode/
+.vs/
+
+# Python tool caches
+__pycache__/
+*.pyc
+
+# Local captures and exports
+captures/
+builds/
+graphify-out/
+backups/
+
+# Bundled Terrain3D sample project (not used by Umbral)
+demo/
+
+# Superseded 1 km terrain pilot
+assets/terrain/heightmaps/umbral_valley_*

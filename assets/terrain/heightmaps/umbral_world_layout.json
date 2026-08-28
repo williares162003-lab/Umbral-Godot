@@ -1,0 +1,28 @@
+{
+  "world_size_meters": 10000,
+  "heightmap_resolution": 2048,
+  "meters_per_vertex": 4.8828125,
+  "seed": 162003,
+  "landmarks": {
+    "northwest_cliffs": [
+      1600,
+      3500
+    ],
+    "northern_crown": [
+      4700,
+      700
+    ],
+    "eastern_mesetas": [
+      8200,
+      4400
+    ],
+    "southern_lake_basin": [
+      4600,
+      7800
+    ],
+    "spawn_meadow": [
+      6450,
+      7950
+    ]
+  }
+}

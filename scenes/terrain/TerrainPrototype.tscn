@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/terrain/terrain_prototype.gd" id="1_terrain"]
+[ext_resource type="Script" path="res://scripts/terrain/terrain_fly_camera.gd" id="2_camera"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_umbral"]
+sky_top_color = Color(0.09, 0.28, 0.52, 1)
+sky_horizon_color = Color(0.72, 0.84, 0.92, 1)
+ground_bottom_color = Color(0.46, 0.62, 0.69, 1)
+ground_horizon_color = Color(0.68, 0.80, 0.88, 1)
+sun_angle_max = 20.0
+
+[sub_resource type="Sky" id="Sky_umbral"]
+sky_material = SubResource("ProceduralSkyMaterial_umbral")
+
+[sub_resource type="Environment" id="Environment_umbral"]
+background_mode = 2
+sky = SubResource("Sky_umbral")
+ambient_light_source = 3
+ambient_light_color = Color(0.70, 0.78, 0.82, 1)
+ambient_light_energy = 0.35
+ambient_light_sky_contribution = 0.3
+reflected_light_source = 2
+tonemap_mode = 3
+
+[node name="TerrainPrototype" type="Node3D"]
+script = ExtResource("1_terrain")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_umbral")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -34, 0)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 0.8
+shadow_enabled = true
+directional_shadow_max_distance = 3000.0
+
+[node name="TerrainCamera" type="Camera3D" parent="."]
+position = Vector3(6600, 880, 8700)
+rotation_degrees = Vector3(-7, 17, 0)
+current = true
+fov = 72.0
+far = 24000.0
+script = ExtResource("2_camera")

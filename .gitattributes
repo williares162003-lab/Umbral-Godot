@@ -1,0 +1,23 @@
+* text=auto
+
+# Godot and project source files use LF in the repository.
+*.gd text eol=lf
+*.gdshader text eol=lf
+*.gdshaderinc text eol=lf
+*.godot text eol=lf
+*.tres text eol=lf
+*.tscn text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+
+# Binary assets.
+*.dll binary
+*.so binary
+*.dylib binary
+*.framework binary
+*.exr binary
+*.glb binary
+*.png binary
+*.r16 binary
+*.res binary
